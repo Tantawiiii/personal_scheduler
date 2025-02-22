@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../data/models/task_model.dart';
+import '../provider/task_provider.dart';
 
 class TimeSlot extends StatelessWidget {
   final int hour;
@@ -27,9 +29,23 @@ class TimeSlot extends StatelessWidget {
             title: Text(task.title),
             subtitle: Text(task.description ?? ''),
             leading: const Icon(Icons.task),
+            trailing: IconButton(
+              icon: const Icon(Icons.delete, color: Colors.red),
+              onPressed: () {
+                _deleteTask(context, task.id);
+              },
+            ),
           )),
         ],
       ),
+    );
+  }
+
+  void _deleteTask(BuildContext context, String taskId) {
+    final taskProvider = Provider.of<TaskProvider>(context, listen: false);
+    taskProvider.deleteTask(taskId);
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Task deleted')),
     );
   }
 }

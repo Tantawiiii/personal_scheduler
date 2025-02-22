@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../data/models/task_model.dart';
 import '../provider/auth_provider.dart';
@@ -102,7 +103,7 @@ class _TaskModalState extends State<TaskModal> {
                 ElevatedButton(
                   onPressed: () {
                     final task = Task(
-                      id: '',
+                      id: const Uuid().v4(),
                       title: _titleController.text,
                       description: _descriptionController.text,
                       startTime: _startTime,

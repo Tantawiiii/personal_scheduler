@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import '../../data/models/task_model.dart';
 import '../../data/services/task_service.dart';
+import 'package:uuid/uuid.dart';
 
 
 class TaskProvider with ChangeNotifier {
@@ -41,8 +42,13 @@ class TaskProvider with ChangeNotifier {
       _isLoading = true;
       notifyListeners();
 
-      final newTask = await _taskService.createTask(task);
-      _tasks.add(newTask);
+      final newTask = task.copyWith(id: task.id.isEmpty ? const Uuid().v4() : task.id);
+      final createdTask = await _taskService.createTask(newTask);
+
+      // Prevent duplication before adding to the list
+      if (!_tasks.any((t) => t.id == createdTask.id)) {
+        _tasks.add(createdTask);
+      }
 
       _isLoading = false;
       notifyListeners();
