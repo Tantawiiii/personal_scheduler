@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "129046458961",
+    "project_id": "personal-scheduler-44795",
+    "storage_bucket": "personal-scheduler-44795.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:129046458961:android:cf8b3a5e7b5159d250fe70",
+        "android_client_info": {
+          "package_name": "com.tantawii.personal_scheduler"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcoAjVQRHJtPecgN3ZplNyiMQYb0IGJog"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
